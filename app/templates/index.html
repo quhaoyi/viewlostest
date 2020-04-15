@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<!--
+	CSE 154, Homework 5 (Weather)
+	You should download and use this weather.html, but do not need to modify it.
+	-->
+	
+	<head>
+		<title>ViewLOS</title>
+		<link href="{{ url_for('static', filename='ViewLOS.css') }}" type="text/css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<h1>
+			Welcome to ViewLOS
+		</h1>
+
+		<div id="namearea">
+			<h2>Please insert the information of the patient:</h2>
+			<form action="{{ url_for('handle_data') }}" method="post">
+				Name: <input name="name"><br>
+				DOB: <input name="dob"><br>
+				Admit time: <input name="admittime"><br>
+				Test1: <input name="test1"><br>
+				Test2: <input name="test2"><br>
+				Test3: <input name="test3"><br>
+    		<input type="submit">
+			</form>
+		</div>
+
+		
+		<!-- an empty div for inserting any error text -->
+		<div id="errors"></div>
+	</body>
+</html>

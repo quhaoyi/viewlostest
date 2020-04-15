@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+   <head>
+      <title>LOS Result</title>
+      <link href="{{ url_for('static', filename='ViewLOS.css') }}" type="text/css" rel="stylesheet" />
+      <style> 
+        .vertical { 
+            border-left: 1px solid black; 
+            height: 30px; 
+        } 
+      </style> 
+   </head>
+   <body>
+      <h1 align="center"> Patient Info </h1>
+      <div style="text-align: center;">
+         <div style="background-color:lightblue;display: inline-block;width: 80%;text-align: left">
+         
+         <table border = 0 style="display: inline-block;">
+            <tbody>
+               <tr>
+                  <td rowspan="2" width="10%"><img src={{ url_for('static', filename='logo.jpg') }} style="width:80px;height:80px;"></td>
+                  <th width="10%" align="right"> Name: </th>
+                  <td width="20%"> {{ result.name }} </td>
+                  <th width="10%" align="right"> DOB: </th>
+                  <td width="20%"> {{ result.dob }} </td>
+                  <th width="10%" align="right"> Admit Time: </th>
+                  <td width="20%"> {{ result.admittime }} </td>
+               </tr>
+               <tr>
+                  <td width="10%" align="right"> Test1: </td>
+                  <td width="20%"> {{ result.test1 }} </td>
+                  <td width="10%" align="right"> Test2: </td>
+                  <td width="20%"> {{ result.test2 }} </td>
+                  <td  width="10%" align="right"> Test3: </td>
+                  <td width="20%"> {{ result.test3 }} </td>
+               </tr>
+            </tbody>
+               
+               <!--
+               {% for key, value in result.items() %}
+               {% if loop.index <= 3%}
+               <tr style="position: relative;left:{{ -20 + 30 * loop.index}}%;"> {{ key }}: </th>
+               <td style="position: relative;left:{{ -20 + 30  * loop.index }}%;"> {{ value }} </td>
+               {% else %}
+               <tr style="position: relative;left:{{ -20 + 30 * (loop.index-3)}}%;"> {{ key }}: </th>
+               <td style="position: relative;left:{{ -20 + 30  * (loop.index-3) }}%;"> {{ value }} </td>
+               {% endif %}
+               {% endfor %}
+               -->
+         </table>
+      </div>
+      <table border = 0 style="display: inline-block;">
+         <tr>
+            <td width=20%>Estimated<br>Length of Stay</td>
+            <td width="40%" align="left"><font size="6">{{result.test1}} Days</font></td>
+            <td width=20% style="padding-right: 5px;">Likelihood Score</td>
+            <td width="30%" align="left"><font size="6">88%</font></td>
+         </tr>
+      </table>
+      {% set los = result.test1 | int %}
+      <div id="datacontainer" style="height: 42px;">
+         <p  style="display: inline-block; position: fixed; left: 19%;margin-bottom: 0px; ">
+            Today
+         </p>
+         <p  style="display: inline-block; position: fixed; left: {{los * 59 / 20 + 16}}%;margin-bottom: 0px;">
+            Discharge Date
+         </p>
+      </div>
+      
+      <div id="linecontainer" style="height: 30px;">
+         <div class="vertical" style="position: fixed; left: 20.5%;display: inline-block;"></div>
+         <div class="vertical" style="position: fixed; left: {{los * 59 / 20 + 20.5}}%;display: inline-block;"></div>
+      </div>
+      
+      <table border = 0 style="width: 60%; margin-right: auto;margin-left: auto; border-collapse: collapse;">
+         <tbody>
+            <tr>
+               <td width="50%" bgcolor="green" height="10"></td>
+               <td width="30%" bgcolor="yellow"></td>
+               <td width="20%" bgcolor="red"></td>
+            </tr>
+         </tbody>
+      </table>
+
+      <div style="border: 2px solid black; border-radius: 20px; width: 60%; display: inline-block; margin-top: 20px;margin-bottom: 5px;">
+         <ol align="left">
+            <li>Testing Feature1 </li>
+            <li>Testing Feature2 </li>
+            <li>Testing Feature3 </li>
+            <li>Testing Feature4 </li>
+         </ol>
+      </div>
+      <form action="{{ url_for('home') }}" method="post">
+         <button type=submit>New Search</button>
+      </form>
+      
+      <a href="/index">Home</a>
+      </div>
+      
+   </body>
+</html>
