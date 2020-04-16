@@ -11,21 +11,106 @@
 	</head>
 
 	<body>
-		<h1>
+		<h1 align="center">
 			Welcome to ViewLOS
 		</h1>
 
-		<div id="namearea">
-			<h2>Please insert the information of the patient:</h2>
-			<form action="{{ url_for('handle_data') }}" method="post">
-				Name: <input name="name"><br>
-				DOB: <input name="dob"><br>
-				Admit time: <input name="admittime"><br>
-				Test1: <input name="test1"><br>
-				Test2: <input name="test2"><br>
-				Test3: <input name="test3"><br>
-    		<input type="submit">
-			</form>
+		<div align="center">
+		<div id="namearea" style="background-color:lightblue;width: 20%;text-align: center;display: inline-block;border-radius:20px;" >
+				<table border="0" align="center">
+					<tr>
+						<th align="center">Please insert the information of the patient:</th>
+						<br>
+					</tr>
+				</table>
+
+				<table border="0" align="center">
+					<tr>
+						<br>
+						<td align="right">
+							Name: 
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="name;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							DOB:  
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="dob;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							Admit time:   
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="admittime;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							Test1:    
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="test1;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							Test2:    
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="test2;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							Test3:    
+						</td>
+
+						<td>
+							<form action="{{ url_for('handle_data') }}" method="post">
+								<input name="test3;" style="background-color:lightblue;">
+							</form>
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" align="center">
+					<br>
+					<tr>
+						<td>
+							<input type="submit">   
+						</td>
+					</tr>
+
+				</table>
+				<br>
+
+		</div>
 		</div>
 
 		
