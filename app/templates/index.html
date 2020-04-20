@@ -29,40 +29,73 @@
 					<tr>
 						<br>
 						<td align="right">
-							Name: 
+							Admission Location: 
 						</td>
 
 						<td>
-							<form >
-								<input name="name" style="background-color:lightblue;">
-							</form>
+								<input name="name" list="admitlocations" style="background-color:lightblue;">
 						</td>
+						<datalist id="admitlocations">
+						  <option value="0">EMERGENCY ROOM ADMIT</option>
+						  <option value="1">PHYS REFERRAL/NORMAL DELI</option>
+						  <option value="2">TRANSFER FROM HOSP/EXTRAM</option>
+						  <option value="3">CLINIC REFERRAL/PREMATURE</option>
+						  <option value="4">TRANSFER FROM OTHER HEALT</option>
+						  <option value="5">** INFO NOT AVAILABLE **</option>
+						  <option value="6">TRANSFER FROM SKILLED NUR</option>
+						  <option value="7">TRSF WITHIN THIS FACILITY</option>
+						</datalist>
 					</tr>
 
 					<tr>
 						<td align="right">
-							DOB:  
+							Discharge Location:  
 						</td>
 
 						<td>
-							<input name="dob" style="background-color:lightblue;">
-
+							<input name="dob" list="dischargelocations" style="background-color:lightblue;">
 						</td>
+						<datalist id="dischargelocations">
+						  <option value="0">DISC-TRAN CANCER/CHLDRN H</option>
+						  <option value="1">HOME HEALTH CARE</option>
+						  <option value="2">HOME</option>
+						  <option value="3">REHAB/DISTINCT PART HOSP</option>
+						  <option value="4">LONG TERM CARE HOSPITAL</option>
+						  <option value="5">SNF</option>
+						  <option value="6">SHORT TERM HOSPITAL</option>
+						  <option value="7">HOME WITH HOME IV PROVIDR</option>
+						  <option value="8">LEFT AGAINST MEDICAL ADVI</option>
+						  <option value="9">DISCH-TRAN TO PSYCH HOSP</option>
+						  <option value="10">HOSPICE-HOME</option>
+						  <option value="11">HOSPICE-MEDICAL FACILITY</option>
+						  <option value="12">DISC-TRAN TO FEDERAL HC</option>
+						  <option value="13">OTHER FACILITY</option>
+						  <option value="14">ICF</option>
+						</datalist>
 					</tr>
 
 					<tr>
 						<td align="right">
-							Admit time:   
+							Marital Status:   
 						</td>
 
 						<td>
-							<input name="admittime" style="background-color:lightblue;">
+							<input name="admittime" list="marriage" style="background-color:lightblue;">
 						</td>
+						<datalist id="marriage">
+						  <option value="0">MARRIED</option>
+						  <option value="1">SINGLEI</option>
+						  <option value="2">DIVORCED</option>
+						  <option value="3">WIDOWED</option>
+						  <option value="4">SEPARATED</option>
+						  <option value="5">LIFE PARTNER</option>
+						  <option value="6">UNKNOWN</option>
+						</datalist>
 					</tr>
 
 					<tr>
 						<td align="right">
-							Test1:    
+							Age:    
 						</td>
 
 						<td>
@@ -73,7 +106,7 @@
 
 					<tr>
 						<td align="right">
-							Test2:    
+							Service Count:    
 						</td>
 
 						<td>
@@ -83,7 +116,7 @@
 
 					<tr>
 						<td align="right">
-							Test3:    
+							ICU LOS:    
 						</td>
 
 						<td>
