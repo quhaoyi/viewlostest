@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import pickle
+import os
 app = Flask(__name__, static_folder='./styles')
 
 @app.route("/")
@@ -25,8 +26,8 @@ def LOS_predict(ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Ser
 
     feature = [ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
     feature_list = [feature]
-    svm_model = pickle.load(open("model/svm_model",'rb'))
-    svr_model = pickle.load(open("model/svr_model",'rb'))
+    svm_model = pickle.load(open(os.path.join(app.static_folder, 'svm_model'),'rb'))
+    svr_model = pickle.load(open(os.path.join(app.static_folder, 'svr_model'),'rb'))
     class_pred = svm_model.predict(feature_list)
     if class_pred[0] == fst_class:
         value_pred_lst = svr_model.predict(feature_list)
