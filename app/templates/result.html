@@ -58,8 +58,16 @@
          -->
          </tr>
       </table>
+      {% if result.los1 <= 20 %}
       {% set los1 = result.los1 | int %}
+      {% else %}
+      {% set los1 = 20 | int %}
+      {% endif %}
+      {% if result.los2 <= 20 %}
       {% set los2 = result.los2 | int %}
+      {% else %}
+      {% set los2 = 20 | int %}
+      {% endif %}
       <div id="datacontainer" style="height: 42px;">
          <p  style="display: inline-block; position: fixed; left: 19%;margin-bottom: 0px; ">
             Today
@@ -71,12 +79,11 @@
       
       <div id="linecontainer" style="height: 30px; vertical-align: center;">
          <div class="vertical" style="position: fixed; left: 20.5%;display: inline-block;"></div>
-         <div class="vertical" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
-         <p style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%; top:45%; display: inline-block;">-></p>
-         <p style="position: fixed; left: {{los2 * 59 / 20 + 19}}%; top:45%; display: inline-block;"><-</p>
+         <div id="reference" class="vertical" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
+         <p id="leftarrow" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%; margin-top: 0px; display: inline-block;">-></p>
+         <p id="rightarrow" style="position: fixed; left: {{los2 * 59 / 20 + 19}}%; margin-top: 0px; display: inline-block;"><-</p>
          <div class="vertical" style="position: fixed; left: {{los2 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
       </div>
-
       <table border = 0 style="width: 60%; margin-right: auto;margin-left: auto; border-collapse: collapse;">
          <tbody>
             <tr>
@@ -90,12 +97,12 @@
       <div style="border: 2px solid black; border-radius: 20px; width: 60%; display: inline-block; margin-top: 20px;margin-bottom: 5px;">
 
          <table>
-             <tr><td width="5%" class="nr"></td><td width="45%" align="left">Admission Location</td><td align="right" width="50%">0.03708</td></tr>
-             <tr><td class="nr"></td><td align="left">Discharge Location</td><td align="right">0.08168</td></tr>
-             <tr><td class="nr"></td><td align="left">Marital Status</td><td align="right">0.04484</td></tr>
+             <tr><td width="5%" class="nr" ></td><td width="45%" align="left">ICU LOS</td><td align="right" width="50%">0.47525</td></tr> 
              <tr><td class="nr"></td><td align="left">Age</td><td align="right">0.23290</td></tr>
+             <tr><td class="nr"></td><td align="left">Discharge Location</td><td align="right">0.08168</td></tr>
              <tr><td class="nr"></td><td align="left">Service Count</td><td align="right">0.06799</td></tr>
-             <tr><td class="nr"></td><td align="left">ICU LOS</td><td align="right">0.47525</td></tr> 
+             <tr><td class="nr"></td><td align="left">Marital Status</td><td align="right">0.04484</td></tr>
+             <tr><td  class="nr"></td><td  align="left">Admission Location</td><td align="right" >0.03708</td></tr>
          </table>
 
          <script type="text/javascript">

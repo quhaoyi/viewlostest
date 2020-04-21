@@ -3,6 +3,9 @@ import pickle
 import os
 app = Flask(__name__, static_folder='./styles')
 
+admitloc = {"EMERGENCY ROOM ADMIT": 0, "PHYS REFERRAL/NORMAL DELI": 1, "TRANSFER FROM HOSP/EXTRAM": 2, "CLINIC REFERRAL/PREMATURE": 3, "HMO REFERRAL/SICK": 4, "TRANSFER FROM OTHER HEALT": 5, "** INFO NOT AVAILABLE **": 6, "TRANSFER FROM SKILLED NUR": 7, "TRSF WITHIN THIS FACILITY": 8}
+disloc = {"DISC-TRAN CANCER/CHLDRN H": 0, "HOME HEALTH CARE": 1, "HOME": 2, "REHAB/DISTINCT PART HOSP": 3, "LONG TERM CARE HOSPITAL": 4, "SNF": 5, "SHORT TERM HOSPITAL": 6, "HOME WITH HOME IV PROVIDR": 7, "LEFT AGAINST MEDICAL ADVI": 8, "DISCH-TRAN TO PSYCH HOSP": 9, "HOSPICE-HOME": 10, "HOSPICE-MEDICAL FACILITY": 11, "DISC-TRAN TO FEDERAL HC": 12, "OTHER FACILITY": 13, "ICF": 14}
+maritalStatus = {"MARRIED": 0, "SINGLE": 1, "DIVORCED": 2, "WIDOWED": 3, "SEPARATED": 4, "LIFE PARTNER": 5, "UNKNOWN (DEFAULT)": 6}
 @app.route("/")
 @app.route("/index")
 @app.route("/back_to_home", methods=['POST'])
@@ -13,8 +16,14 @@ def home():
 def handle_data():
     result = request.form.to_dict()
     losRange = LOS_predict(result['name'], result['dob'], result['admittime'], result['test1'], result['test2'], result['test3'])
+    invAdmit = {v: k for k, v in admitloc.items()}
+    invDis = {v: k for k, v in disloc.items()}
+    invmarry = {v: k for k, v in maritalStatus.items()}
     result['los1'] = round(losRange[0], 2)
     result['los2'] = round(losRange[1], 2)
+    result['name'] = invAdmit[int(result['name'])]
+    result['dob'] = invDis[int(result['dob'])]
+    result['admittime'] = invmarry[int(result['admittime'])]
     return render_template("result.html",result = result)
 
 
