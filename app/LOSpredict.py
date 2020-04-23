@@ -12,7 +12,7 @@ def LOS_predict(ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Ser
     fst_class = 0
     class_breakpoint = 30
     interval = 5
-    variance = [4, 4, 4, 4, 7, 7]
+    variance = [3.8, 3.8, 6, 7.5, 8.2, 8.5]
 
     feature = [ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
     feature_list = [feature]
