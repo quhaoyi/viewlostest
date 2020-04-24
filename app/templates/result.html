@@ -14,121 +14,119 @@
       <h1 align="center"> Patient Info </h1>
       <div style="text-align: center;">
          <div style="background-color:lightblue;display: inline-block;width: 80%;text-align: left">
+            <table border = 0 style="display: inline-block;">
+               <tbody>
+                  <tr>
+                     <td rowspan="2" width="10%"><img src={{ url_for('static', filename='profile.png') }} style="width:80px;height:80px;"></td>
+                     <td width="10%" align="right"> Admit Location: </td>
+                     <td width="20%"> {{ result.name }} </td>
+                     <td width="10%" align="right"> Discharge Location: </td>
+                     <td width="20%"> {{ result.dob }} </td>
+                     <td width="10%" align="right"> Marital Status: </td>
+                     <td width="20%"> {{ result.admittime }} </td>
+                  </tr>
+                  <tr>
+                     <td width="10%" align="right"> Age: </td>
+                     <td width="20%"> {{ result.test1 }} </td>
+                     <td width="10%" align="right"> Service Count: </td>
+                     <td width="20%"> {{ result.test2 }} </td>
+                     <td  width="10%" align="right"> ICU LOS: </td>
+                     <td width="20%"> {{ result.test3 }} </td>
+                  </tr>
+               </tbody>
+                  
+                  <!--
+                  {% for key, value in result.items() %}
+                  {% if loop.index <= 3%}
+                  <tr style="position: relative;left:{{ -20 + 30 * loop.index}}%;"> {{ key }}: </th>
+                  <td style="position: relative;left:{{ -20 + 30  * loop.index }}%;"> {{ value }} </td>
+                  {% else %}
+                  <tr style="position: relative;left:{{ -20 + 30 * (loop.index-3)}}%;"> {{ key }}: </th>
+                  <td style="position: relative;left:{{ -20 + 30  * (loop.index-3) }}%;"> {{ value }} </td>
+                  {% endif %}
+                  {% endfor %}
+                  -->
+            </table>
+         </div>
+         <table border = 0 style="display: inline-block; width: '70%;">
+            <tr>
+               <td width=20%>Estimated<br>Length of Stay</td>
+               <td width="40%" align="left"><font size="6">{{result.los1}} -  {{result.los2}} Days</font></td>
+            <!--<td width=20% style="padding-right: 5px;">Likelihood Score</td>
+               <td width="30%" align="left"><font size="6">78%</font></td>
+            -->
+            </tr>
+         </table>
+         <!--
+         {% if result.los1 <= 20 %}
+         {% set los1 = result.los1 | int %}
+         {% else %}
+         {% set los1 = 20 | int %}
+         {% endif %}
+         {% if result.los2 <= 20 %}
+         {% set los2 = result.los2 | int %}
+         {% else %}
+         {% set los2 = 20 | int %}
+         {% endif %}
+         <div id="datacontainer" style="height: 42px;">
+            <p  style="display: inline-block; position: fixed; left: 19%;margin-bottom: 0px; ">
+               Today
+            </p>
+            <p  style="display: inline-block; position: fixed; left: {{(los1 + los2) / 2 * 59 / 20 + 16}}%;margin-bottom: 0px;">
+               Discharge Range
+            </p>
+         </div>
          
-         <table border = 0 style="display: inline-block;">
+         <div id="linecontainer" style="height: 30px; vertical-align: center;">
+            <div class="vertical" style="position: fixed; left: 20.5%;display: inline-block;"></div>
+            <div id="reference" class="vertical" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
+            <p id="leftarrow" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%; margin-top: 0px; display: inline-block;">-></p>
+            <p id="rightarrow" style="position: fixed; left: {{los2 * 59 / 20 + 19}}%; margin-top: 0px; display: inline-block;"><-</p>
+            <div class="vertical" style="position: fixed; left: {{los2 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
+         </div>
+         <table border = 0 style="width: 60%; margin-right: auto;margin-left: auto; border-collapse: collapse;">
             <tbody>
                <tr>
-                  <td rowspan="2" width="10%"><img src={{ url_for('static', filename='profile.png') }} style="width:80px;height:80px;"></td>
-                  <td width="10%" align="right"> Admit Location: </td>
-                  <td width="20%"> {{ result.name }} </td>
-                  <td width="10%" align="right"> Discharge Location: </td>
-                  <td width="20%"> {{ result.dob }} </td>
-                  <td width="10%" align="right"> Marital Status: </td>
-                  <td width="20%"> {{ result.admittime }} </td>
-               </tr>
-               <tr>
-                  <td width="10%" align="right"> Age: </td>
-                  <td width="20%"> {{ result.test1 }} </td>
-                  <td width="10%" align="right"> Service Count: </td>
-                  <td width="20%"> {{ result.test2 }} </td>
-                  <td  width="10%" align="right"> ICU LOS: </td>
-                  <td width="20%"> {{ result.test3 }} </td>
+                  <td width="50%" bgcolor="green" height="10"></td>
+                  <td width="30%" bgcolor="yellow"></td>
+                  <td width="20%" bgcolor="red"></td>
                </tr>
             </tbody>
-               
-               <!--
-               {% for key, value in result.items() %}
-               {% if loop.index <= 3%}
-               <tr style="position: relative;left:{{ -20 + 30 * loop.index}}%;"> {{ key }}: </th>
-               <td style="position: relative;left:{{ -20 + 30  * loop.index }}%;"> {{ value }} </td>
-               {% else %}
-               <tr style="position: relative;left:{{ -20 + 30 * (loop.index-3)}}%;"> {{ key }}: </th>
-               <td style="position: relative;left:{{ -20 + 30  * (loop.index-3) }}%;"> {{ value }} </td>
-               {% endif %}
-               {% endfor %}
-               -->
          </table>
-      </div>
-      </div>
-      <table border = 0 style="display: inline-block;">
-         <tr>
-            <td width=20%>Estimated<br>Length of Stay</td>
-            <td width="40%" align="left"><font size="6">{{result.los1}} -  {{result.los2}} Days</font></td>
-         <!--<td width=20% style="padding-right: 5px;">Likelihood Score</td>
-            <td width="30%" align="left"><font size="6">78%</font></td>
          -->
-         </tr>
-      </table>
-      <!--
-      {% if result.los1 <= 20 %}
-      {% set los1 = result.los1 | int %}
-      {% else %}
-      {% set los1 = 20 | int %}
-      {% endif %}
-      {% if result.los2 <= 20 %}
-      {% set los2 = result.los2 | int %}
-      {% else %}
-      {% set los2 = 20 | int %}
-      {% endif %}
-      <div id="datacontainer" style="height: 42px;">
-         <p  style="display: inline-block; position: fixed; left: 19%;margin-bottom: 0px; ">
-            Today
-         </p>
-         <p  style="display: inline-block; position: fixed; left: {{(los1 + los2) / 2 * 59 / 20 + 16}}%;margin-bottom: 0px;">
-            Discharge Range
-         </p>
-      </div>
-      
-      <div id="linecontainer" style="height: 30px; vertical-align: center;">
-         <div class="vertical" style="position: fixed; left: 20.5%;display: inline-block;"></div>
-         <div id="reference" class="vertical" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
-         <p id="leftarrow" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%; margin-top: 0px; display: inline-block;">-></p>
-         <p id="rightarrow" style="position: fixed; left: {{los2 * 59 / 20 + 19}}%; margin-top: 0px; display: inline-block;"><-</p>
-         <div class="vertical" style="position: fixed; left: {{los2 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
-      </div>
-      <table border = 0 style="width: 60%; margin-right: auto;margin-left: auto; border-collapse: collapse;">
-         <tbody>
-            <tr>
-               <td width="50%" bgcolor="green" height="10"></td>
-               <td width="30%" bgcolor="yellow"></td>
-               <td width="20%" bgcolor="red"></td>
-            </tr>
-         </tbody>
-      </table>
-      -->
-      <div style="border: 2px solid black; border-radius: 20px; width: 60%; display: inline-block; margin-top: 20px;margin-bottom: 5px;">
+         <div style="border: 2px solid black; border-radius: 20px; width: 60%; display: inline-block; margin-top: 20px;margin-bottom: 5px;">
 
-         <table>
-             <tr><td width="5%" class="nr" ></td><td width="45%" align="left">ICU LOS</td><td align="right" width="50%">0.47525</td></tr> 
-             <tr><td class="nr"></td><td align="left">Age</td><td align="right">0.23290</td></tr>
-             <tr><td class="nr"></td><td align="left">Discharge Location</td><td align="right">0.08168</td></tr>
-             <tr><td class="nr"></td><td align="left">Service Count</td><td align="right">0.06799</td></tr>
-             <tr><td class="nr"></td><td align="left">Marital Status</td><td align="right">0.04484</td></tr>
-             <tr><td  class="nr"></td><td  align="left">Admission Location</td><td align="right" >0.03708</td></tr>
-         </table>
+            <table>
+                <tr><td width="5%" class="nr" ></td><td width="45%" align="left">ICU LOS</td><td align="right" width="50%">0.47525</td></tr> 
+                <tr><td class="nr"></td><td align="left">Age</td><td align="right">0.23290</td></tr>
+                <tr><td class="nr"></td><td align="left">Discharge Location</td><td align="right">0.08168</td></tr>
+                <tr><td class="nr"></td><td align="left">Service Count</td><td align="right">0.06799</td></tr>
+                <tr><td class="nr"></td><td align="left">Marital Status</td><td align="right">0.04484</td></tr>
+                <tr><td  class="nr"></td><td  align="left">Admission Location</td><td align="right" >0.03708</td></tr>
+            </table>
 
-         <script type="text/javascript">
-             var a = document.getElementsByClassName("nr");
-             for (var i = 0; i < a.length; i++) {
-                 a[i].innerHTML = (i+1)+".";
-             }
-         </script>
-         <!--
-         <ol align="left">
-            <li>Admission Location     0.03708 </li>
-            <li>Discharge Location     0.08168 </li>
-            <li>Marital Status         0.04484 </li>
-            <li>Age                    0.23290 </li>
-            <li>Service Count          0.06799 </li>
-            <li>ICU LOS                0.47525 </li>
-         </ol>
-      -->
-      </div>
-      <form action="{{ url_for('home') }}" method="post">
-         <button type=submit>New Search</button>
-      </form>
-      
-      <a href="/index">Home</a>
+            <script type="text/javascript">
+                var a = document.getElementsByClassName("nr");
+                for (var i = 0; i < a.length; i++) {
+                    a[i].innerHTML = (i+1)+".";
+                }
+            </script>
+            <!--
+            <ol align="left">
+               <li>Admission Location     0.03708 </li>
+               <li>Discharge Location     0.08168 </li>
+               <li>Marital Status         0.04484 </li>
+               <li>Age                    0.23290 </li>
+               <li>Service Count          0.06799 </li>
+               <li>ICU LOS                0.47525 </li>
+            </ol>
+         -->
+         </div>
+         <form action="{{ url_for('home') }}" method="post">
+            <button type=submit>New Search</button>
+         </form>
+         
+         <a href="/index">Home</a>
       </div>
       
    </body>
