@@ -59,7 +59,6 @@
             </tr>
          </table>
          </div>
-         <!--
          {% if result.los1 <= 20 %}
          {% set los1 = result.los1 | int %}
          {% else %}
@@ -74,17 +73,21 @@
             <p  style="display: inline-block; position: fixed; left: 19%;margin-bottom: 0px; ">
                Today
             </p>
+            <!--
             <p  style="display: inline-block; position: fixed; left: {{(los1 + los2) / 2 * 59 / 20 + 16}}%;margin-bottom: 0px;">
                Discharge Range
             </p>
+         -->
          </div>
          
          <div id="linecontainer" style="height: 30px; vertical-align: center;">
             <div class="vertical" style="position: fixed; left: 20.5%;display: inline-block;"></div>
+            <!--
             <div id="reference" class="vertical" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
             <p id="leftarrow" style="position: fixed; left: {{los1 * 59 / 20 + 20.5}}%; margin-top: 0px; display: inline-block;">-></p>
             <p id="rightarrow" style="position: fixed; left: {{los2 * 59 / 20 + 19}}%; margin-top: 0px; display: inline-block;"><-</p>
             <div class="vertical" style="position: fixed; left: {{los2 * 59 / 20 + 20.5}}%;display: inline-block;"></div>
+         -->
          </div>
          <table border = 0 style="width: 60%; margin-right: auto;margin-left: auto; border-collapse: collapse;">
             <tbody>
@@ -95,7 +98,6 @@
                </tr>
             </tbody>
          </table>
-         -->
          <div style="border: 2px solid black; border-radius: 20px; width: 60%; display: inline-block; margin-top: 20px;margin-bottom: 5px;">
 
             <table>
